@@ -4,7 +4,7 @@ const lupeIcon = document.querySelector("button.search #lupeicon");
 const inputSearchName = document.querySelector("input#searchName");
 const inputSearchYear = document.querySelector("input#searchYear");
 const myFavsMovieList = document.querySelector("section#yourFilmFavs");
-
+const wrapperFilmsArticle = document.querySelector("article.wrapperFilms");
 let movieList = [];
 async function searchButtonClickHander() {
   try {
@@ -22,9 +22,10 @@ async function searchButtonClickHander() {
     modalOverlay.classList.remove("closed");
     modalOverlay.classList.add("open");
   } catch (error) {
+    btnSearch.classList.remove("check");
+    btnSearch.classList.add("error");
     lupeIcon.setAttribute("state", "morph-cross");
     modalOverlay.classList.add("closed");
-    btnSearch.classList.add("error");
 
     swal({
       title: error.message,
@@ -66,12 +67,13 @@ function addToList(movieObject) {
 }
 
 function updateUi(movieObject) {
-  myFavsMovieList.innerHTML += `
+  wrapperFilmsArticle.innerHTML += `
+   <section class="yourFilmFavs" id="movie-card-${movieObject.imdbID}">
     <h1>${movieObject.Title}</h1>
     <div class="imgFilmFav">
       <div class="poster">
         <img src="${movieObject.Poster}" alt="Poster do filme ${movieObject.Title}">
-        <button class="rmvFilm">
+        <button class="rmvFilm" onclick="removeFilmOnList('${movieObject.imdbID}')">
           Remover
           <lord-icon src="https://cdn.lordicon.com/egqwwrlq.json" trigger="hover"
             colors="primary:#646e78,secondary:#242424,tertiary:#ebe6ef,quaternary:#3a3347">
@@ -79,7 +81,8 @@ function updateUi(movieObject) {
         </button>
       </div>
     </div>
-  `;
+</article>
+    `;
 }
 
 function isMovieOnList(id) {
@@ -87,4 +90,9 @@ function isMovieOnList(id) {
     return movieObject.imdbID === id;
   }
   return Boolean(movieList.find(traccerId));
+}
+
+function removeFilmOnList(id) {
+  movieList = movieList.filter((movie) => movie.imdbID !== id);
+  document.getElementById(`movie-card-${id}`).remove();
 }
