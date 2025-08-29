@@ -1,0 +1,60 @@
+:root {
+  --bg-color: #e9e9e9;
+  --bg-color-opc: #e9e9e9e9;
+  --primary-clr: #0046ff;
+  --second-clr: #ff8040;
+  --complementary: #001bb7;
+}
+
+section#modal img {
+  width: 25rem;
+  height: auto;
+  border-radius: 2rem;
+}
+
+section#modal {
+  width: 100vw;
+  height: 100dvh;
+  position: fixed;
+  padding: 2rem;
+  top: 0;
+  left: 0;
+  display: grid;
+  align-items: center;
+  gap: 1.5rem;
+  background: var(--bg-color-opc);
+  /* display: none; */
+
+  transition: opacity 0.5s;
+}
+
+section#modal.closed {
+  transition: all 0.8s ease;
+  visibility: hidden;
+  opacity: 0;
+}
+
+section#modal.open {
+  visibility: visible;
+  opacity: 1;
+
+}
+
+section#sideImg {
+  text-align: center;
+  margin-inline: auto;
+}
+
+section#modal section#sideDescFilm {
+  display: grid;
+  gap: 5rem;
+  font-weight: bold;
+}
+
+button.addToList {
+  background: var(--second-clr);
+  padding: 1.5rem;
+  border: none;
+  border-radius: 0.9rem;
+  cursor: pointer;
+}
