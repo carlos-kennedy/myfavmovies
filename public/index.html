@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script defer src="https://cdn.lordicon.com/lordicon.js"></script>
+  <script defer src="./modal.js"></script>
+  <script defer src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script defer src="./index.js"></script>
+  <link rel="stylesheet" href="./style/style.css">
+  <link rel="stylesheet" href="./style/modal.css">
+  <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400&f[]=chillax@500&display=swap" rel="stylesheet">
+
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/alertify.min.css" />
+  <!-- Default theme -->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.14.0/build/css/themes/default.min.css" />
+
+
+  <title>FavsMovies</title>
+</head>
+
+<body>
+  <header>
+    <!-- LOGO -->
+    <div class="logoFavs">
+      <lord-icon id="logo" src="https://cdn.lordicon.com/xyzxllpb.json" trigger="in" delay="500" state="in-reveal"
+        colors="primary:#3a3347,secondary:#ffffff,tertiary:#e4e4e4">
+      </lord-icon>
+      <h4>FavsMovies</h4>
+    </div>
+
+    <div class="searcs">
+      <div class="searchForName">
+        <div class="inputName">
+          <label for="searchName">Name:</label>
+          <input type="text" id="searchName" />
+        </div>
+      </div>
+      <div class="searchForYear">
+        <div class="inputYear">
+          <label for="searchYear">Year:</label>
+          <input type="text" id="searchYear" maxlength="4" />
+        </div>
+
+        <button class="search">
+          <!-- morph-cross para quando não econtrar -->
+          <!-- morph-check para quando encontrar -->
+          <lord-icon id="lupeicon" trigger="" src="https://cdn.lordicon.com/yudxjmzy.json"
+            colors="primary:#000000,secondary:#ffffff,tertiary:#000000">
+          </lord-icon>
+        </button>
+      </div>
+
+
+    </div>
+
+  </header>
+  <main>
+
+    <section id="yourFilmFavs">
+      <article class="wrapperFilms">
+        <h1>
+          Start now of the your favorite films
+        </h1>
+        <article class="imgFilmFav">
+
+
+        </article>
+      </article>
+
+    </section>
+    <article>
+      <section id="modal-wrapper">
+        <section id="modal" class="closed">
+
+        </section>
+      </section>
+    </article>
+    </section>
+  </main>
+</body>
+
+</html>
