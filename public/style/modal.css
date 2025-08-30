@@ -1,9 +1,8 @@
 :root {
-  --bg-color: #e9e9e9;
-  --bg-color-opc: #e9e9e9e9;
-  --primary-clr: #0046ff;
-  --second-clr: #ff8040;
-  --complementary: #001bb7;
+  --bg-color: #4d6473;
+  --primary-clr: #2c4757;
+  --second-clr: #f3bd68;
+  --font-clr: #ffffff;
 }
 
 section#modal img {
@@ -22,7 +21,7 @@ section#modal {
   display: grid;
   align-items: center;
   gap: 1.5rem;
-  background: var(--bg-color-opc);
+  background: var(--bg-color);
   /* display: none; */
 
   transition: opacity 0.5s;
@@ -37,7 +36,6 @@ section#modal.closed {
 section#modal.open {
   visibility: visible;
   opacity: 1;
-
 }
 
 section#sideImg {
