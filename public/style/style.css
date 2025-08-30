@@ -7,13 +7,14 @@
 /* Color Theme Swatches in HSLA */
 
 :root {
-  --bg-color: #e9e9e9;
-  --primary-clr: #0046ff;
-  --second-clr: #ff8040;
+  --bg-color: #4d6473;
+  --primary-clr: #2c4757;
+  --second-clr: #f3bd68;
   --error-clr: #db1414;
   --check-clr: #b3e70c;
-  --complementary: #001bb7;
+  --font-clr: #ffffff;
 }
+
 
 html {
   scroll-behavior: smooth;
@@ -25,13 +26,13 @@ body {
   font-family: "Cabinet Grotesk", sans-serif;
   font-size: 1.6rem;
   background: var(--bg-color);
+  color: var(--font-clr);
 }
 
 body button {
   cursor: pointer;
 }
-/* font-family: 'Cabinet Grotesk', sans-serif;
-font-family: 'Chillax', sans-serif; */
+
 
 lord-icon {
   width: 2.5rem;
@@ -44,7 +45,7 @@ header {
   align-items: center;
   flex-direction: column;
   background: var(--primary-clr);
-  color: #ffffff;
+  color: var(--font-clr);
 }
 
 header h4 {
@@ -130,6 +131,7 @@ div.searcs button.search.check {
 
 article.wrapperFilms {
   display: flex;
+  justify-content: center;
   gap: 3rem;
   padding-top: 3rem;
   flex-wrap: wrap;
@@ -141,14 +143,14 @@ h1 {
   padding-block: 1.2rem;
 }
 
-article.imgFilmFav {
+div.imgFilmFav {
   display: flex;
   gap: 2rem;
   align-items: center;
   justify-content: center;
 }
 
-article.imgFilmFav img {
+div.imgFilmFav img {
   border-radius: 0.8rem;
   width: 25rem;
 }
@@ -172,11 +174,3 @@ div.poster button.rmvFilm {
   font-weight: bold;
   color: #ffffff;
 }
-
-/* button.rmv-film {
-  display: flex;
-  align-items: center;
-  padding: 2rem;
-  border-radius: 0.8rem;
-  border: none;
-} */
