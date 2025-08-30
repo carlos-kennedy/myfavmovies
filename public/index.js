@@ -70,8 +70,7 @@ function updateUi(movieObject) {
     <div class="imgFilmFav">
       <div class="poster">
         <img src="${movieObject.Poster}" alt="Poster do filme ${movieObject.Title}">
-        <button class="rmvFilm" onclick="removeFilmOnList('${movieObject.imdbID}')">
-          
+        <button class="rmvFilm" onclick="removeFilmOnList('${movieObject.imdbID}')">  
           <lord-icon src="https://cdn.lordicon.com/egqwwrlq.json" trigger="hover"
             colors="primary:#646e78,secondary:#242424,tertiary:#ebe6ef,quaternary:#3a3347">
           </lord-icon>
