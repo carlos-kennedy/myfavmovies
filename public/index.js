@@ -8,7 +8,6 @@ const wrapperFilmsArticle = document.querySelector("article.wrapperFilms");
 const h1WhenNoMovies = document.querySelector("section h1");
 let movieList = JSON.parse(localStorage.getItem("movieList")) ?? [];
 
-
 const sw = document.querySelector(".swiper").swiper;
 
 async function searchButtonClickHander() {
@@ -97,7 +96,7 @@ function removeFilmOnList(id) {
   document.getElementById(`movie-card-${id}`).remove();
   updateLocalStorage();
   h1WhenNoMovies.style.visibility = "visible";
-  swiper.update();
+  sw.update();
 }
 
 function updateLocalStorage() {
@@ -112,4 +111,12 @@ btnSearch.addEventListener("click", () => {
   lupeIcon.setAttribute("trigger", "in");
 
   searchButtonClickHander();
+});
+
+document.addEventListener("keydown", (eventy) => {
+  if (eventy.key === "Enter") {
+    lupeIcon.setAttribute("trigger", "in");
+
+    searchButtonClickHander();
+  }
 });
