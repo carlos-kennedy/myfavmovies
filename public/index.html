@@ -7,10 +7,14 @@
   <script defer src="https://cdn.lordicon.com/lordicon.js"></script>
   <script defer src="./modal.js"></script>
   <script defer src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script defer src="slides.js"></script>
   <script defer src="./index.js"></script>
   <link rel="stylesheet" href="./style/style.css">
   <link rel="stylesheet" href="./style/modal.css">
   <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400&f[]=chillax@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
 
 
   <!-- CSS -->
@@ -64,10 +68,14 @@
       <h1>
         Start now of the your favorite films
       </h1>
-      <article class="wrapperFilms">
+      <div class="swiper mySwiper">
+        <article class="wrapperFilms swiper-wrapper">
 
 
-      </article>
+        </article>
+        <div class="swiper-pagination"></div>
+
+      </div>
     </section>
     <article>
       <section id="modal-wrapper">
@@ -77,6 +85,23 @@
       </section>
     </article>
     </section>
+
+    <!-- 
+      <div class="swiper mySwiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide">Slide 1</div>
+      <div class="swiper-slide">Slide 2</div>
+      <div class="swiper-slide">Slide 3</div>
+      <div class="swiper-slide">Slide 4</div>
+      <div class="swiper-slide">Slide 5</div>
+      <div class="swiper-slide">Slide 6</div>
+      <div class="swiper-slide">Slide 7</div>
+      <div class="swiper-slide">Slide 8</div>
+      <div class="swiper-slide">Slide 9</div>
+    </div>
+    
+  </div>
+   -->
   </main>
 </body>
 

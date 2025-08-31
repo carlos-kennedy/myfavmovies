@@ -8,6 +8,9 @@ const wrapperFilmsArticle = document.querySelector("article.wrapperFilms");
 const h1WhenNoMovies = document.querySelector("section h1");
 let movieList = JSON.parse(localStorage.getItem("movieList")) ?? [];
 
+
+const sw = document.querySelector(".swiper").swiper;
+
 async function searchButtonClickHander() {
   try {
     let url = `/api/movies?name=${movieNameParameterGen()}&year=${moviYearParameterGen()}`;
@@ -65,7 +68,7 @@ function addToList(movieObject) {
 function updateUi(movieObject) {
   h1WhenNoMovies.style.visibility = "hidden";
   wrapperFilmsArticle.innerHTML += `
-   <section class="yourFilmFavs" id="movie-card-${movieObject.imdbID}">
+   <section class="yourFilmFavs swiper-slide" id="movie-card-${movieObject.imdbID}">
     <h1>${movieObject.Title}</h1>
     <div class="imgFilmFav">
       <div class="poster">
@@ -79,6 +82,7 @@ function updateUi(movieObject) {
     </div>
 </article>
     `;
+  sw.update();
 }
 
 function isMovieOnList(id) {
@@ -93,13 +97,13 @@ function removeFilmOnList(id) {
   document.getElementById(`movie-card-${id}`).remove();
   updateLocalStorage();
   h1WhenNoMovies.style.visibility = "visible";
+  swiper.update();
 }
 
 function updateLocalStorage() {
   localStorage.setItem("movieList", JSON.stringify(movieList));
 }
 
-// Faz com que rode apenas uma vez para que o arquivo seja lido
 for (const movieInfo of movieList) {
   updateUi(movieInfo);
 }
