@@ -17,6 +17,14 @@ new Swiper(".mySwiper", {
     700: {
       slidesPerView: 3,
       spaceBetween: 60,
-    }
+    },
+    1000: {
+      slidesPerView: 4,
+      spaceBetween: 50,
+    },
+    1400: {
+      slidesPerView: 6,
+      spaceBetween: 10,
+    },
   },
 });
