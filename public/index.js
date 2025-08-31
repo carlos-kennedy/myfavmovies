@@ -21,7 +21,6 @@ async function searchButtonClickHander() {
       throw new Error("Filme não encontrado");
     }
     createModal(data);
-    h1WhenNoMovies.style.visibility = "visible";
     btnSearch.classList.add("check");
     modalOverlay.classList.remove("closed");
     modalOverlay.classList.add("open");
@@ -94,8 +93,10 @@ function isMovieOnList(id) {
 function removeFilmOnList(id) {
   movieList = movieList.filter((movie) => movie.imdbID !== id);
   document.getElementById(`movie-card-${id}`).remove();
+  if (movieList.length === 0) {
+    h1WhenNoMovies.style.visibility = "visible";
+  }
   updateLocalStorage();
-  h1WhenNoMovies.style.visibility = "visible";
   sw.update();
 }
 
