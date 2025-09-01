@@ -82,3 +82,13 @@ button.addToList {
     border-radius: 2rem;
   }
 }
+
+div.swal-modal {
+  background-color: var(--bg-color-md);
+}
+div.swal-title {
+  color: var(--font-clr);
+}
+div.swal-button-container button.swal-button {
+  background: var(--second-clr);
+}
