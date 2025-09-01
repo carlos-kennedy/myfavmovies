@@ -1,6 +1,6 @@
-import axios from "axios";
+const axios = require("axios");
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   const { name, year } = req.query;
 
   try {
@@ -16,4 +16,4 @@ export default async function handler(req, res) {
   } catch (error) {
     res.status(500).json({ error: "Erro ao buscar filmes" });
   }
-}
+};
