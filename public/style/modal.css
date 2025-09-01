@@ -1,6 +1,7 @@
 :root {
-  --bg-color: #4d6473;
-  --primary-clr: #2c4757;
+  --bg-color-md: #15161c;
+  --bg-color: #020f1f;
+  --primary-clr: #050709;
   --second-clr: #f3bd68;
   --font-clr: #ffffff;
 }
@@ -21,21 +22,26 @@ section#modal {
   display: grid;
   align-items: center;
   gap: 1.5rem;
-  background: var(--bg-color);
-  /* display: none; */
-
-  transition: opacity 0.5s;
+  background: var(--bg-color-md);
+  transition: opacity 1s;
 }
 
 section#modal.closed {
   transition: all 0.8s ease;
   visibility: hidden;
   opacity: 0;
+  z-index: -1;
 }
 
 section#modal.open {
   visibility: visible;
   opacity: 1;
+  z-index: 10;
+}
+
+section#modal lord-icon.star {
+  width: 2.5rem;
+  height: 2.5rem;
 }
 
 section#sideImg {
@@ -45,7 +51,7 @@ section#sideImg {
 
 section#modal section#sideDescFilm {
   display: grid;
-  gap: 5rem;
+  gap: 2rem;
   font-weight: bold;
 }
 
@@ -55,4 +61,24 @@ button.addToList {
   border: none;
   border-radius: 0.9rem;
   cursor: pointer;
+}
+
+@media (min-width: 700px) {
+  section#sideImg h2 {
+    padding-bottom: 2rem;
+  }
+
+  section#modal {
+    align-content: center;
+    width: 80vw;
+    height: 80dvh;
+    left: 50%;
+    top: 50%;
+    gap: 2rem;
+    align-items: center;
+    transform: translate(-50%, -50%);
+    grid-template-columns: 1fr 1fr;
+    padding: 3rem;
+    border-radius: 2rem;
+  }
 }
