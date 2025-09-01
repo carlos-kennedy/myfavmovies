@@ -7,8 +7,8 @@
 /* Color Theme Swatches in HSLA */
 
 :root {
-  --bg-color: #4d6473;
-  --primary-clr: #2c4757;
+  --bg-color: #020f1f;
+  --primary-clr: #050709;
   --second-clr: #f3bd68;
   --error-clr: #db1414;
   --check-clr: #b3e70c;
@@ -73,6 +73,25 @@ input {
   font-size: 2rem;
 }
 
+section#yourFilmFavs {
+  position: relative;
+}
+
+div.swiper-wrapper {
+  z-index: 0;
+}
+
+div.swiper-horizontal > div.swiper-pagination-bullets,
+div.swiper-pagination-bullets div.swiper-pagination-horizontal,
+div.swiper-pagination-custom,
+div.swiper-pagination-fraction {
+  top: 55rem;
+}
+
+span.swiper-pagination-bullet-active {
+  background: var(--second-clr);
+}
+
 div.searcs {
   display: flex;
   justify-content: left;
@@ -126,19 +145,13 @@ div.searcs button.search.error {
 div.searcs button.search.check {
   background: var(--check-clr);
 }
-/* 
-article.wrapperFilms {
-  display: flex;
-  justify-content: center;
-  gap: 3rem;
-  padding-top: 3rem;
-  flex-wrap: wrap;
-} */
 
 h1 {
   text-align: center;
-  text-wrap: nowrap;
   font-size: 1.4rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  text-wrap: nowrap;
 
   padding-block: 1.2rem;
 }
@@ -174,4 +187,8 @@ div.poster button.rmvFilm {
   background-color: var(--second-clr);
   font-weight: bold;
   color: #ffffff;
+}
+
+section div.swiper {
+  position: initial;
 }
