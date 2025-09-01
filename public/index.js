@@ -5,31 +5,32 @@ const inputSearchName = document.querySelector("input#searchName");
 const inputSearchYear = document.querySelector("input#searchYear");
 const myFavsMovieList = document.querySelector("section#yourFilmFavs");
 const wrapperFilmsArticle = document.querySelector("article.wrapperFilms");
-const h1WhenNoMovies = document.querySelector("section h1");
+const whenHaveNotFilm = document.querySelector("div.whenHaveNotFilm");
 let movieList = JSON.parse(localStorage.getItem("movieList")) ?? [];
 
 const sw = document.querySelector(".swiper").swiper;
 
 async function searchButtonClickHander() {
   try {
+    lupeIcon.setAttribute("trigger", "loop");
     let url = `/api/movies?name=${movieNameParameterGen()}&year=${moviYearParameterGen()}`;
     const res = await fetch(url);
     const data = await res.json();
     lupeIcon.setAttribute("state", "morph-check");
-
     if (data.Error) {
       throw new Error("Filme não encontrado");
     }
     createModal(data);
     btnSearch.classList.add("check");
     modalOverlay.classList.remove("closed");
+    btnSearch.classList.remove("error");
     modalOverlay.classList.add("open");
+    lupeIcon.setAttribute("trigger", "in");
   } catch (error) {
+    lupeIcon.setAttribute("trigger", "in");
     btnSearch.classList.remove("check");
     btnSearch.classList.add("error");
-    lupeIcon.setAttribute("state", "morph-cross");
     modalOverlay.classList.add("closed");
-
     swal({
       title: error.message,
       icon: "error",
@@ -41,7 +42,6 @@ function movieNameParameterGen() {
   if (inputSearchName.value === "") {
     throw new Error("Deve ser preenchido com o nome do filme");
   }
-
   return inputSearchName.value.split(" ").join("+");
 }
 
@@ -58,13 +58,11 @@ function moviYearParameterGen() {
   }
   return `${inputSearchYear.value}`;
 }
-
 function addToList(movieObject) {
   movieList.push(movieObject);
 }
-
 function updateUi(movieObject) {
-  h1WhenNoMovies.style.visibility = "hidden";
+  whenHaveNotFilm.style.display = "none";
   wrapperFilmsArticle.innerHTML += `
    <section class="yourFilmFavs swiper-slide" id="movie-card-${movieObject.imdbID}">
     <h1>${movieObject.Title}</h1>
@@ -94,7 +92,7 @@ function removeFilmOnList(id) {
   movieList = movieList.filter((movie) => movie.imdbID !== id);
   document.getElementById(`movie-card-${id}`).remove();
   if (movieList.length === 0) {
-    h1WhenNoMovies.style.visibility = "visible";
+    whenHaveNotFilm.style.display = "flex";
   }
   updateLocalStorage();
   sw.update();
@@ -109,8 +107,6 @@ for (const movieInfo of movieList) {
 }
 
 btnSearch.addEventListener("click", () => {
-  lupeIcon.setAttribute("trigger", "in");
-
   searchButtonClickHander();
 });
 
