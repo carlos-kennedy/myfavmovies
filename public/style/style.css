@@ -10,8 +10,7 @@
   --bg-color: #020f1f;
   --primary-clr: #050709;
   --second-clr: #f3bd68;
-  --error-clr: #db1414;
-  --check-clr: #b3e70c;
+  --check-clr: #c4e70c82;
   --font-clr: #ffffff;
 }
 
@@ -26,6 +25,7 @@ body {
   font-size: 1.6rem;
   background: var(--bg-color);
   color: var(--font-clr);
+  height: 100dvh;
 }
 
 body button {
@@ -92,18 +92,11 @@ span.swiper-pagination-bullet-active {
   background: var(--second-clr);
 }
 
-div.searcs {
+div.searchs {
   display: flex;
   justify-content: left;
-  align-items: left;
   flex-direction: column;
   gap: 1.2rem;
-}
-
-div.searchForName input {
-  margin-bottom: 1rem;
-  border-radius: 0.8rem;
-  border: none;
 }
 
 div.searchForYear {
@@ -118,6 +111,11 @@ div.inputName {
   display: grid;
   gap: 0.7rem;
 }
+div.searchForName input {
+  margin-bottom: 0;
+  border-radius: 0.8rem;
+  border: none;
+}
 
 div.searchForYear input {
   width: 9rem;
@@ -125,7 +123,7 @@ div.searchForYear input {
   border: none;
 }
 
-div.searcs button.search {
+div.searchs button.search {
   padding: 1.2rem;
   border-radius: 0.8rem;
   border: none;
@@ -133,22 +131,31 @@ div.searcs button.search {
   transition: background 0.3s ease;
 }
 
+div.whenHaveNotFilm {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  filter: grayscale(1);
+  opacity: 0.3;
+}
+
+div.whenHaveNotFilm img {
+  width: 10rem;
+}
+
 lord-icon.lupe {
   width: 4rem;
   margin: 5rem;
 }
 
-div.searcs button.search.error {
-  background: var(--error-clr);
-}
-
-div.searcs button.search.check {
+div.searchs button.search.check {
   background: var(--check-clr);
 }
 
 h1 {
   text-align: center;
-  font-size: 1.4rem;
+  font-size: 1.9rem;
   text-overflow: ellipsis;
   overflow: hidden;
   text-wrap: nowrap;
@@ -191,4 +198,25 @@ div.poster button.rmvFilm {
 
 section div.swiper {
   position: initial;
+}
+
+@media (min-width: 1000px) {
+  header {
+    flex-flow: row;
+    justify-content: space-evenly;
+  }
+
+  div.searchs {
+    flex-flow: row;
+  }
+  div.searchForName {
+    display: flex;
+    align-items: center;
+  }
+
+  div.searchForName input {
+    margin-bottom: 0;
+    border-radius: 0.8rem;
+    border: none;
+  }
 }
