@@ -13,8 +13,8 @@ function createModal(data) {
                 src="${data.Poster}"
                 alt="title">
             </section>
-
             <section id="sideDescFilm">
+            <div id="rating"></div>
               <p> DESCRIÇÂO: ${data.Plot}</p>
 
               <p>Elenco: ${data.Actors}</p>
@@ -25,6 +25,31 @@ function createModal(data) {
             <button class="addToList" onclick="addCurrentMovieToList()">
               Add to your list
             </button>`;
+
+  ratingStars();
+}
+
+function ratingStars() {
+  const rating = document.querySelector("#rating");
+  const stars = Math.round(currentMovie.imdbRating / 2);
+  rating.innerHTML = "";
+  for (let i = 1; i <= 5; i++) {
+    if (i <= stars) {
+      rating.innerHTML += `<lord-icon class="star filled"
+    src="https://cdn.lordicon.com/edplgash.json"
+    colors="primary:#ffc738,secondary:#242424,tertiary:#ebe6ef"
+    trigger="in"
+    state="hover-wink">
+</lord-icon>`;
+    } else {
+      rating.innerHTML += `<lord-icon class="star"
+    src="https://cdn.lordicon.com/edplgash.json"
+    colors="primary:#848484,secondary:#b4b4b4,tertiary:#ebe6ef"
+    trigger="in"
+    state="hover-wink">
+</lord-icon>`;
+    }
+  }
 }
 
 function haveSameFilm() {}
@@ -49,4 +74,4 @@ function addCurrentMovieToList() {
   closeModal();
 }
 
-modalOverlay.addEventListener("click", closeModal);
+document.addEventListener("click", closeModal);
