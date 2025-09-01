@@ -58,6 +58,9 @@ function closeModal() {
   modalOverlay.classList.remove("open");
   modalOverlay.classList.add("closed");
   htmlRoot.style.overflow = "auto";
+  btnSearch.classList.remove("error");
+  btnSearch.classList.remove("check");
+  lupeIcon.setAttribute("state", "morph");
 }
 
 function addCurrentMovieToList() {
