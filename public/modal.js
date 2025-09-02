@@ -1,9 +1,7 @@
 const modalOverlay = document.querySelector("#modal");
-const htmlRoot = document.querySelector("html");
 
 let currentMovie = {};
 function createModal(data) {
-  htmlRoot.style.overflow = "hidden";
   currentMovie = data;
   modalOverlay.innerHTML = `     <section id="sideImg">
               <h2>
@@ -57,7 +55,6 @@ function haveSameFilm() {}
 function closeModal() {
   modalOverlay.classList.remove("open");
   modalOverlay.classList.add("closed");
-  htmlRoot.style.overflow = "auto";
   btnSearch.classList.remove("error");
   btnSearch.classList.remove("check");
   lupeIcon.setAttribute("state", "morph");
