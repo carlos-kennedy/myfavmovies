@@ -7,7 +7,7 @@
 }
 
 section#modal img {
-  width: 25rem;
+  width: 15rem;
   height: auto;
   border-radius: 2rem;
 }
@@ -80,6 +80,30 @@ button.addToList {
     grid-template-columns: 1fr 1fr;
     padding: 3rem;
     border-radius: 2rem;
+  }
+
+  section#modal img {
+    width: 25rem;
+    height: auto;
+    border-radius: 2rem;
+  }
+
+  button.addToList {
+    width: 25rem;
+    margin-inline: auto;
+  }
+
+}
+
+@media (min-width: 1000px) {
+  section#modal {
+    width: 65vw;
+    height: fit-content;
+  }
+}
+@media (min-width: 1200px) {
+  section#modal {
+    width: 50vw;
   }
 }
 
