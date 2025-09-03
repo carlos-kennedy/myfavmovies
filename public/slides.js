@@ -1,4 +1,7 @@
 new Swiper(".mySwiper", {
+  autoplay: {
+    delay: 5000,
+  },
   slidesPerView: 1,
   spaceBetween: 1,
   centeredSlides: true,
@@ -8,12 +11,10 @@ new Swiper(".mySwiper", {
     clickable: true,
   },
   breakpoints: {
-    // when window width is >= 320px
     320: {
       slidesPerView: 1,
       spaceBetween: 20,
     },
-    // when window width is >= 480px
     700: {
       slidesPerView: 3,
       spaceBetween: 60,
