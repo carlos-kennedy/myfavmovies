@@ -45,14 +45,30 @@ section#modal lord-icon.star {
 }
 
 section#sideImg {
+  position: relative;
   text-align: center;
   margin-inline: auto;
+}
+
+section#sideImg svg {
+  position: absolute;
+  top: -4rem;
+  right: -7rem;
+  cursor: pointer;
+  width: 2.5rem;
+  height: 2.5rem;
 }
 
 section#modal section#sideDescFilm {
   display: grid;
   gap: 2rem;
   font-weight: bold;
+}
+
+div.modal-footer {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 button.addToList {
@@ -63,9 +79,32 @@ button.addToList {
   cursor: pointer;
 }
 
+button.closeModal {
+  border-radius: 1.5rem;
+}
+
+button.closeModal svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+button.closeModal svg g#Icon-Set {
+  fill: var(--bg-color-md);
+}
+
+button.closeModal {
+  background: var(--font-clr);
+  border: none;
+  padding: 1.5rem;
+}
+
 @media (min-width: 700px) {
   section#sideImg h2 {
     padding-bottom: 2rem;
+  }
+
+  section#modal-wrapper {
+    position: relative;
   }
 
   section#modal {
@@ -89,10 +128,15 @@ button.addToList {
   }
 
   button.addToList {
-    width: 25rem;
-    margin-inline: auto;
+    width: 15rem;
   }
 
+  div.modal-footer {
+    position: absolute;
+    gap: 2rem;
+    right: 3rem;
+    top: 3rem;
+  }
 }
 
 @media (min-width: 1000px) {
@@ -112,6 +156,9 @@ div.swal-modal {
 }
 div.swal-title {
   color: var(--font-clr);
+}
+div.swal-text {
+  color: var(--second-clr);
 }
 div.swal-button-container button.swal-button {
   background: var(--second-clr);
