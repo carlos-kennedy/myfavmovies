@@ -28,6 +28,7 @@ async function searchButtonClickHander() {
     lupeIcon.setAttribute("trigger", "in");
   } catch (error) {
     lupeIcon.setAttribute("trigger", "in");
+    lupeIcon.setAttribute("state", "morph-cross");
     btnSearch.classList.remove("check");
     btnSearch.classList.add("error");
     modalOverlay.classList.add("closed");
@@ -50,7 +51,6 @@ function moviYearParameterGen() {
     return "";
   }
   if (Number.isNaN(Number(inputSearchYear.value))) {
-    btnSearch.classList.add("error");
     throw new Error("O ano do filme é inválido");
   } else if (inputSearchYear.value <= 1890) {
     btnSearch.classList.add("error");
@@ -62,13 +62,17 @@ function addToList(movieObject) {
   movieList.push(movieObject);
 }
 function updateUi(movieObject) {
+  if (movieObject.Poster === "N/A") {
+    movieObject.Poster = "./img/404.png";
+  }
+
   whenHaveNotFilm.style.display = "none";
   wrapperFilmsArticle.innerHTML += `
    <section class="yourFilmFavs swiper-slide" id="movie-card-${movieObject.imdbID}">
     <h1>${movieObject.Title}</h1>
     <div class="imgFilmFav">
       <div class="poster">
-        <img src="${movieObject.Poster}" alt="Poster do filme ${movieObject.Title}">
+        <img src="${movieObject.Poster}" alt="Poster do filme ${movieObject.Title}" onclick="openModalToShowTheInfoOfFilm('${movieObject.imdbID}')">
         <button class="rmvFilm" onclick="removeFilmOnList('${movieObject.imdbID}')">  
           <lord-icon src="https://cdn.lordicon.com/egqwwrlq.json" trigger="hover"
             colors="primary:#646e78,secondary:#242424,tertiary:#ebe6ef,quaternary:#3a3347">
@@ -86,6 +90,31 @@ function isMovieOnList(id) {
     return movieObject.imdbID === id;
   }
   return Boolean(movieList.find(traccerId));
+}
+
+function openModalToShowTheInfoOfFilm(imdbID) {
+  const movieObject = movieList.find((movie) => movie.imdbID === imdbID);
+  modalOverlay.classList.remove("closed");
+  modalOverlay.classList.add("open");
+  modalOverlay.innerHTML = `   
+    <section id="sideImg">
+              <h2>
+                ${movieObject.Title} - ${movieObject.Year}
+              </h2>
+              <img
+                src="${movieObject.Poster}"
+                alt="title" class="poster" >
+            </section>
+            <section id="sideDescFilm">
+            <div id="rating"></div>
+              <p> DESCRIÇÂO: ${movieObject.Plot}</p>
+
+              <p>Elenco: ${movieObject.Actors}</p>
+
+              <p>Gênero: ${movieObject.Genre}</p>
+            </section>
+`;
+  ratingStars(movieObject);
 }
 
 function removeFilmOnList(id) {
