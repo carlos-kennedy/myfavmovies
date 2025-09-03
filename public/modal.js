@@ -3,13 +3,16 @@ const modalOverlay = document.querySelector("#modal");
 let currentMovie = {};
 function createModal(data) {
   currentMovie = data;
+  if (data.Poster === "N/A") {
+    data.Poster = './img/404.png" ';
+  }
   modalOverlay.innerHTML = `     <section id="sideImg">
               <h2>
                 ${data.Title} - ${data.Year}
               </h2>
               <img
                 src="${data.Poster}"
-                alt="title">
+                alt="title" class="poster">
             </section>
             <section id="sideDescFilm">
             <div id="rating"></div>
@@ -23,13 +26,12 @@ function createModal(data) {
             <button class="addToList" onclick="addCurrentMovieToList()">
               Add to your list
             </button>`;
-
-  ratingStars();
+  ratingStars(currentMovie);
 }
 
-function ratingStars() {
+function ratingStars(actualMovie) {
   const rating = document.querySelector("#rating");
-  const stars = Math.round(currentMovie.imdbRating / 2);
+  const stars = Math.round(actualMovie.imdbRating / 2);
   rating.innerHTML = "";
   for (let i = 1; i <= 5; i++) {
     if (i <= stars) {
@@ -55,6 +57,7 @@ function haveSameFilm() {}
 function closeModal() {
   modalOverlay.classList.remove("open");
   modalOverlay.classList.add("closed");
+  modalOverlay.classList.remove("movieNotFound");
   btnSearch.classList.remove("error");
   btnSearch.classList.remove("check");
   lupeIcon.setAttribute("state", "morph");
@@ -73,5 +76,8 @@ function addCurrentMovieToList() {
   updateLocalStorage();
   closeModal();
 }
-
-document.addEventListener("click", closeModal);
+document.addEventListener("click", (e) => {
+  if (e.target === modalOverlay) {
+    closeModal();
+  }
+});
