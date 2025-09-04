@@ -73,7 +73,7 @@ function updateUi(movieObject) {
     <h1>${movieObject.Title}</h1>
     <div class="imgFilmFav">
       <div class="poster">
-        <img src="${movieObject.Poster}" alt="Poster do filme ${movieObject.Title}" onclick="openModalToShowTheInfoOfFilm('${movieObject.imdbID}')">
+        <img src="${movieObject.Poster}" alt="Poster do filme ${movieObject.Title}" onclick="openModalToShowTheInfoOfFilm('${movieObject.imdbID}')" onerror="this.src='./img/404.png'">
         <button class="rmvFilm" onclick="removeFilmOnList('${movieObject.imdbID}')">  
           <lord-icon src="https://cdn.lordicon.com/egqwwrlq.json" trigger="hover"
             colors="primary:#646e78,secondary:#242424,tertiary:#ebe6ef,quaternary:#3a3347">
@@ -104,7 +104,7 @@ function openModalToShowTheInfoOfFilm(imdbID) {
               </h2>
               <img
                 src="${movieObject.Poster}"
-                alt="title" class="poster" >
+                alt="title" class="poster" onerror="this.src='./img/404.png'">
             </section>
             <section id="sideDescFilm">
             <div id="rating"></div>
