@@ -35,14 +35,18 @@ function createModal(data) {
     data.Plot = "Sem descrição disponível..";
     data.Genre = "Desconhecido";
     document.querySelector("button.addToList").style.display = "none";
+    document.querySelector("button.closeModal").style.display = "none";
     sureForAddMovieUnknown();
+    notificationSound();
   }
 }
 
 function posterExists(imgPoster) {
   imgPoster.src = "./img/404.png";
   document.querySelector("button.addToList").style.display = "none";
+  document.querySelector("button.closeModal").style.display = "none";
   sureForAddMovieUnknown();
+  notificationSound();
 }
 
 function ratingStars(actualMovie) {
@@ -77,6 +81,7 @@ function closeModal() {
   btnSearch.classList.remove("error");
   btnSearch.classList.remove("check");
   lupeIcon.setAttribute("state", "morph");
+  btnClickSound();
 }
 
 function addCurrentMovieToList() {
@@ -85,6 +90,7 @@ function addCurrentMovieToList() {
       title: "Filme já adicionado",
       icon: "info",
     });
+    notificationSound();
     return;
   }
   addToList(currentMovie);

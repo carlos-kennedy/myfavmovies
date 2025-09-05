@@ -37,6 +37,7 @@ async function searchButtonClickHander() {
       title: error.message,
       icon: "error",
     });
+    errorSound();
   }
 }
 
@@ -84,6 +85,7 @@ function updateUi(movieObject) {
 </article>
     `;
   sw.update();
+  addingSound();
 }
 
 function isMovieOnList(id) {
@@ -122,6 +124,7 @@ function openModalToShowTheInfoOfFilm(imdbID) {
 
 `;
   ratingStars(movieObject);
+  addingSound();
 }
 
 function removeFilmOnList(id) {
@@ -132,6 +135,7 @@ function removeFilmOnList(id) {
   }
   updateLocalStorage();
   sw.update();
+  removeFilmSound();
 }
 
 function updateLocalStorage() {
@@ -144,12 +148,13 @@ for (const movieInfo of movieList) {
 
 btnSearch.addEventListener("click", () => {
   searchButtonClickHander();
+  btnClickSound();
 });
 
 document.addEventListener("keydown", (eventy) => {
   if (eventy.key === "Enter") {
     lupeIcon.setAttribute("trigger", "in");
-
+    btnClickSound();
     searchButtonClickHander();
   }
 });
