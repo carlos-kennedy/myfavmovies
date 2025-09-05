@@ -124,7 +124,7 @@ function openModalToShowTheInfoOfFilm(imdbID) {
 
 `;
   ratingStars(movieObject);
-  addingSound();
+  btnClickSound();
 }
 
 function removeFilmOnList(id) {
